@@ -6,7 +6,6 @@ class Frame{
 	final int BIG = 100, frameNumber = 7;
 	Pool pool = new Pool();
 	Tile[] tileArray = new Tile[BIG];
-	private char tile;
 	int total;
 	
 	// Constructs the frame with 7 tiles.
