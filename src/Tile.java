@@ -1,6 +1,6 @@
 /**
  * Created by Robert Crossan.
- * Class used to describe the Tills found in the Pool in the Scrabble game.
+ * Class used to describe the Tiles found in the Pool in the Scrabble game.
  */
 
 public class Tile {
