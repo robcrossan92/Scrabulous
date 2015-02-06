@@ -40,7 +40,7 @@ class Frame{
 	//  Replaces any tiles that have been removed
 	public void replaceTiles(){
 		for (int i = 0; i < frameNumber; i++) {
-			if (tileArray[i].getLetter() == '_') {
+			if (tileArray[i].getLetter() == '-') {
 				tileArray[i] = pool.drawTileFromPool();
 			}
 		}
@@ -59,7 +59,7 @@ class Frame{
 	public void removeTile(char letter){
 		for (int i = 0; i < frameNumber; i++) {
 			if (tileArray[i].getLetter() == letter) {
-				tileArray[i].setLetter('_');
+				tileArray[i].setLetter('-');
 			}
 		}
 	}
