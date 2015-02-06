@@ -1,8 +1,10 @@
-import java.util.Random;
+// Frame class created by David McCann
+// Student Number: 12431298
+// Class used to represent a Frame of tiles used in Scrabble
+
 class Frame{
 	
-	// Variables initialised
-	Random random = new Random();
+	// Variables initialised. 
 	final int BIG = 100, frameNumber = 7;
 	Pool pool = new Pool();
 	Tile[] tileArray = new Tile[BIG];
