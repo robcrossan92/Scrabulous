@@ -58,12 +58,8 @@ class Frame{
 	}
 	
 	// Removes a chosen tile from the Frame.
-	public void removeTile(char letter){
-		for (int i = 0; i < frameNumber; i++) {
-			if (tileArray[i].getLetter() == letter) {
-				tileArray[i].setLetter('-');
-			}
-		}
+	public void removeTile(int tileNumber){
+				tileArray[tileNumber - 1].setLetter('-');
 	}
 	
 	// Checks whether a chosen letter is in the Frame.
