@@ -29,7 +29,7 @@ class Frame{
 	// Method to print all tiles in the frame. 
 	public void printTiles(){
 		for (int i = 0; i < frameNumber; i++) {
-			System.out.println(tileArray[i] + " ");
+			System.out.println("Tile " + (i + 1) + ": " + tileArray[i] + " ");
 		}
 		System.out.print("\n");
 	}
