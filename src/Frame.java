@@ -42,7 +42,7 @@ class Frame{
 	//  Replaces any tiles that have been removed with another Tile.
 	public void replaceTiles(){
 		for (int i = 0; i < frameNumber; i++) {
-			if (tileArray[i].getLetter() == '-') {
+			if (tileArray[i].getLetter() == '0') {
 				tileArray[i] = pool.drawTileFromPool();
 			}
 		}
