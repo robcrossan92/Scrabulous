@@ -28,9 +28,9 @@ class Frame{
 	
 	// Method to print all tiles in the frame. 
 	public String printTiles(){
-		String print = " ";
+		String print = "";
 		for (int i = 0; i < frameNumber; i++) {
-			print += "Tile " + (i + 1) + ": " + tileArray[i] + " ";
+			print += "Tile " + (i + 1) + ": " + tileArray[i] + "\n";
 		}
 		return print;
 	}
