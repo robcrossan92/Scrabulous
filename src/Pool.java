@@ -79,14 +79,13 @@ public class Pool {
 	 * Allows the pool to be checked to see if it is empty
 	 */
 	public boolean isEmptyPool() {
-		if(remainingTiles == 0) return true;
-		else return false;
+		return remainingTiles == 0;
 	}
 	
 	/**
 	 * Allows tiles to be drawn at random from the pool
 	 * If the pool is empty a new Tile is returned with all zero values.
-	 * If the pool is not empty a random tile is choosen from the pool and removed from the array
+	 * If the pool is not empty a random tile is chosen from the pool and removed from the array
 	 */
 	public Tile drawTileFromPool() {
 		Tile condition;
