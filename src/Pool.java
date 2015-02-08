@@ -59,12 +59,12 @@ public class Pool {
 			}
 		}
 		
-		for(int i = 0; i < pool.length; i++) {
-			int randomPosition = generator.nextInt(pool.length);
-			Tile temp = pool[i];
-			pool[i] = pool[randomPosition];
-			pool[randomPosition] = temp;
-		}
+		//for(int i = 0; i < pool.length; i++) {
+			//int randomPosition = generator.nextInt(pool.length);
+			//Tile temp = pool[i];
+			//pool[i] = pool[randomPosition];
+			//pool[randomPosition] = temp;
+		//}
 		return pool;	
 	}
 
@@ -107,6 +107,35 @@ public class Pool {
 			condition = draw;
 		}
 		return condition;
+	}
+	
+	/**
+	 * @param tile
+	 * @return
+	 */
+	
+	public Tile swapTileIntoPool(Tile tile) {
+		Tile swapTile = new Tile();
+		
+		if(isEmptyPool()) {
+			System.out.println("There is " + LeftInPool() + " tiles left.");
+			swapTile = new Tile ();
+		}
+		
+		else {	
+			int randomPosition = generator.nextInt(remainingTiles);
+			Tile draw = pool[randomPosition];
+			
+			for (int i = randomPosition; i < pool.length - 1; i++) {
+				pool[i] = pool[i+1];
+			}
+			
+			remainingTiles--;
+			swapTile = draw;
+		}
+		
+		pool[remainingTiles] = tile;
+		return swapTile;
 	}
 		
 	/**
