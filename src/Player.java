@@ -11,8 +11,8 @@ public class Player {
 	private String PlayerName;		
 
 	//allow access to frame
-	public void getPlayerFrame() {
-		playerFrame.printTiles();
+	public String getPlayerFrame() {
+		return playerFrame.printTiles();
 	}
 	
 	//allow access to frame
