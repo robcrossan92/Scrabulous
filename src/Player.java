@@ -1,23 +1,26 @@
-import java.util.Scanner;
-
 import javax.swing.JOptionPane;
 
 public class Player {
 	
 	//variables of type frame
-	Frame playerFrame;
-	
+	private Frame playerFrame;
 	private int playerScore;
-	private String PlayerName;		
-
-	//allow access to frame
-	public String getPlayerFrame() {
-		return playerFrame.printTiles();
-	}
+	private String playerName;
 	
-	//allow access to frame
-	public void setPlayerFrame(Frame playerFrame) {
+	//Constructor
+	public Player(String name) {
+		this.playerName = name;
+		this.playerScore = 0;
 		this.playerFrame = new Frame();
+	}
+
+	public String getPlayerName() {
+		return playerName;
+	}
+
+	//method to allow player name to be set
+	public void setPlayerName(String playerName) {
+		this.playerName = playerName;
 	}
 
 	//allows access to player score
@@ -25,46 +28,24 @@ public class Player {
 		return playerScore;
 	}
 
-
 	public void setPlayerScore(int playerScore) {
 		this.playerScore = playerScore;
 	}
-
-
-	public String getPlayerName() {
-		return PlayerName;
-	}
-
-	//method to allow player name to be set
-	public void setPlayerName(String playerName) {
-		PlayerName = playerName;
-	}
-
-	//Constructor
-	public Player(){
-		this.PlayerName = "";
-		this.playerScore = 0;
-		this.playerFrame = new Frame();
-	}
 	
-	//Constructor
-	public Player(String name, int score, Frame frame){
-		this.PlayerName = name;
-		this.playerScore = score;
-		this.playerFrame = frame;
+	public Frame getPlayerFrame() {
+		return playerFrame;
 	}
-	
-	public void setPlayer(){
-		Player player = new Player();
-		player.setPlayerFrame(playerFrame);
+
+	public void setPlayerFrame(Frame playerFrame) {
+		this.playerFrame = playerFrame;
 	}
 
 	//method to allow player data to be reset
-	public Player resetPlayer(Player p){
-		p = new Player();
-		return null;	
+	public Player resetPlayer(){
+		String newPlayer = JOptionPane.showInputDialog(null, "Enter Reset Player name:");
+		Player player = new Player(newPlayer);
+		return player;	
 	}
-	
 	
 	//Adds points from users entered word to players score
 	public void addScore(String word)

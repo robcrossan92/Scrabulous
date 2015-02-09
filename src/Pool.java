@@ -59,12 +59,12 @@ public class Pool {
 			}
 		}
 		
-		//for(int i = 0; i < pool.length; i++) {
-			//int randomPosition = generator.nextInt(pool.length);
-			//Tile temp = pool[i];
-			//pool[i] = pool[randomPosition];
-			//pool[randomPosition] = temp;
-		//}
+		for(int i = 0; i < pool.length; i++) {
+			int randomPosition = generator.nextInt(pool.length);
+			Tile temp = pool[i];
+			pool[i] = pool[randomPosition];
+			pool[randomPosition] = temp;
+		}
 		return pool;	
 	}
 
@@ -92,7 +92,7 @@ public class Pool {
 		
 		if(isEmptyPool()) {
 			System.out.println("There is " + LeftInPool() + " tiles left.");
-			condition = new Tile ();
+			condition = new Tile();
 		}
 		
 		else {	
@@ -151,5 +151,4 @@ public class Pool {
 		}
 		return value;
 	}
-	
 }
