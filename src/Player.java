@@ -6,12 +6,14 @@ public class Player {
 	private Frame playerFrame;
 	private int playerScore;
 	private String playerName;
+	private Pool playerPool;
 	
 	//Constructor
-	public Player(String name) {
+	public Player(String name, Pool pool) {
 		this.playerName = name;
 		this.playerScore = 0;
-		this.playerFrame = new Frame();
+		this.playerFrame = new Frame(pool);
+		this.playerPool = pool;
 	}
 
 	public String getPlayerName() {
@@ -43,7 +45,7 @@ public class Player {
 	//method to allow player data to be reset
 	public Player resetPlayer(){
 		String newPlayer = JOptionPane.showInputDialog(null, "Enter Reset Player name:");
-		Player player = new Player(newPlayer);
+		Player player = new Player(newPlayer, playerPool);
 		return player;	
 	}
 	

@@ -8,21 +8,22 @@ class Frame{
 	int total = 0;
 	final int BIG = 100, frameNumber = 7;
 	// Initialise pool object from pool class.
-	private Pool pool = new Pool();
+	private Pool tilePool;
 	// Create Tile array to store Tiles.
 	Tile[] tileArray = new Tile[BIG];
 	
 	// Constructs the Frame with 7 tiles.
-	public Frame(){
+	public Frame(Pool pool){
+		tilePool = pool;
 		for (int i = 0; i < frameNumber; i++) {
-			tileArray[i] = pool.drawTileFromPool();
+			tileArray[i] = tilePool.drawTileFromPool();
 			total++;
 		}
 	}
 	
 	//  Replaces any tiles that have been removed with another Tile.
 	public void replaceTiles(int tileNumber){
-		tileArray[tileNumber - 1] = pool.swapTileIntoPool(tileArray[tileNumber - 1]);
+		tileArray[tileNumber - 1] = tilePool.swapTileIntoPool(tileArray[tileNumber - 1]);
 	}
 	
 	// Checks whether a chosen letter is in the Frame.
@@ -49,7 +50,7 @@ class Frame{
 	public void reFill(){
 		total = 0;
 		for (int i = 0; i < frameNumber; i++) {
-			tileArray[i] =  pool.drawTileFromPool();
+			tileArray[i] =  tilePool.drawTileFromPool();
 			total++;
 		}
 	}
@@ -66,10 +67,5 @@ class Frame{
 			print += "Tile " + (i + 1) + ": " + tileArray[i] + "\n";
 		}
 		return print;
-	}
-	
-	public Pool getPool()
-	{
-		return pool;
 	}
 }

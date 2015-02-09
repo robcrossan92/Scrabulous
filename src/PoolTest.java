@@ -3,9 +3,9 @@ import javax.swing.JOptionPane;
 public class PoolTest {
 
 public static void main(String[] args){
-		
+		Pool pool = new Pool();
 		String P1Name = JOptionPane.showInputDialog(null, "Enter Player 1 name:");
-		Player Player1 = new Player(P1Name);
+		Player Player1 = new Player(P1Name, pool);
 		
 		System.out.println("Player 1: Name: \n" + Player1.getPlayerName() + "\n");
 		System.out.println("Player 1: Score: \n" + Player1.getPlayerScore() + "\n");
@@ -18,7 +18,7 @@ public static void main(String[] args){
 		System.out.println("-----------------------------------------\n");
 
 		String P2Name = JOptionPane.showInputDialog(null, "Enter Player 2 name:");
-		Player Player2 = new Player(P2Name);
+		Player Player2 = new Player(P2Name, pool);
 
 		System.out.println("Player 2: Name: \n" + Player2.getPlayerName() + "\n");
 		System.out.println("Player 2: Score: \n" + Player2.getPlayerScore() + "\n");
@@ -29,5 +29,6 @@ public static void main(String[] args){
 		Player2 = Player2.resetPlayer();
 		System.out.println("Player 2: Reset Frame: " + Player2.getPlayerName() + "\n" + Player2.getPlayerFrame() + "\n");
 		System.out.println("-----------------------------------------\n");
+		System.out.println(pool.LeftInPool());
 	}
 }
