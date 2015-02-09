@@ -20,7 +20,7 @@ class Frame{
 			total++;
 		}
 	}
-	
+		
 	//  Replaces any tiles that have been removed with another Tile.
 	public void replaceTiles(int tileNumber){
 		tileArray[tileNumber - 1] = tilePool.swapTileIntoPool(tileArray[tileNumber - 1]);
@@ -46,6 +46,7 @@ class Frame{
 	public Tile getTile(int tileNumber){
 		return tileArray[tileNumber - 1];
 	}
+	
 	// Completely refill Frame with 7 new Tiles.
 	public void reFill(){
 		total = 0;
@@ -54,12 +55,7 @@ class Frame{
 			total++;
 		}
 	}
-	
-	// Gets the size of the frame and returns it.
-	public int size() {
-		return total;
-	}
-	
+		
 	// Method to print all tiles in the frame. 
 	public String toString() {
 		String print = "";

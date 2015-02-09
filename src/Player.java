@@ -3,23 +3,22 @@ import javax.swing.JOptionPane;
 public class Player {
 	
 	//variables of type frame
+	private static Pool playerPool = new Pool();
 	private Frame playerFrame;
 	private int playerScore;
 	private String playerName;
-	private Pool playerPool;
 	
 	//Constructor
-	public Player(String name, Pool pool) {
+	public Player(String name) {
 		this.playerName = name;
 		this.playerScore = 0;
-		this.playerFrame = new Frame(pool);
-		this.playerPool = pool;
+		this.playerFrame = new Frame(playerPool);
 	}
 
 	public String getPlayerName() {
 		return playerName;
 	}
-
+ 
 	//method to allow player name to be set
 	public void setPlayerName(String playerName) {
 		this.playerName = playerName;
@@ -42,10 +41,18 @@ public class Player {
 		this.playerFrame = playerFrame;
 	}
 
+	public static Pool getPlayerPool() {
+		return playerPool;
+	}
+	
+	public void setPlayerPool(Pool pool) {
+		Player.playerPool = pool;
+	}
+	
 	//method to allow player data to be reset
 	public Player resetPlayer(){
 		String newPlayer = JOptionPane.showInputDialog(null, "Enter Reset Player name:");
-		Player player = new Player(newPlayer, playerPool);
+		Player player = new Player(newPlayer);
 		return player;	
 	}
 	
@@ -58,5 +65,5 @@ public class Player {
 		playerScore += addedScore;
 		System.out.println("Score after move is: " +addedScore+ " points.");
   
-	} 
+	}
 }

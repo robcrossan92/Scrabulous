@@ -51,6 +51,6 @@ public class Tile {
 	}
 
 	public String toString() {
-		return "Letter = " + letter + ", Value = " + value + ", Count = " + count;
+		return "Letter = " + letter + ", Value = " + value;
 	}
 }

@@ -129,8 +129,6 @@ public class Pool {
 			for (int i = randomPosition; i < pool.length - 1; i++) {
 				pool[i] = pool[i+1];
 			}
-			
-			remainingTiles--;
 			swapTile = draw;
 		}
 		
