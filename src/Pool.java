@@ -1,9 +1,16 @@
 import java.util.Random;
 
 /**
- * Created by Robert Crossan.
- * Class used to represent the Pool of Tiles used in the game of Scrabble.
+ * Scrabulous
+ * 
+ * Created by:
+ * Robert Crossan (10306563)
+ * Niamh Kavanagh (12495522)
+ * David McCann (12431298)
+ * 
+ * Class used to represent the Pool of Tiles used in the game.
  */
+
 public class Pool {
 	/**
 	 * @POOLSIZE Total possible number of Tiles in the Pool
@@ -19,10 +26,11 @@ public class Pool {
 	private Tile[] alphabet = new Tile[ALPHABET];
 
 	/**
-	 * Constructor: For loop initialises @pool with Tile Objects
+	 * Constructor: For loop initializes @pool with Tile Objects
 	 */
 	public Pool() {
-		for(int i = 0; i < pool.length; i++) {
+		for(int i = 0; i < pool.length; i++)
+		{
 			pool[i] = new Tile();
 		}
 		storeTileValues();
@@ -37,7 +45,8 @@ public class Pool {
 		int[] values = {1,3,3,2,1,4,2,4,1,8,5,1,3,1,1,3,10,1,1,1,1,4,4,8,4,10,0};
 		int[] counts = {9,2,2,4,12,2,3,2,9,1,1,4,2,6,8,2,1,6,4,6,4,2,2,1,2,1,2};
 		
-		for(int i = 0; i < alphabet.length; i++) {
+		for(int i = 0; i < alphabet.length; i++)
+		{
 			alphabet[i] = new Tile(letters[i], values[i], counts[i]);
 		}
 		return alphabet;
@@ -45,21 +54,24 @@ public class Pool {
 		
 	/**
 	 * Allows the pool to be reset.
-	 * It fills the Pool with another 100 Tiles and randomises their order
+	 * It fills the Pool with another 100 Tiles and randomizes their order
 	 * It also resets the value of @remainingTiles back to @POOLSIZE
 	 * Nested for loops are used to run through each letter and make getCount() copies of the tiles
 	 */
 	public Tile[] resetPool() {
 		remainingTiles = POOLSIZE;
 		
-		for(int i = 0, count = 0; i < alphabet.length; i++) {
-			for(int j = 0; j < alphabet[i].getCount(); j++) {
+		for(int i = 0, count = 0; i < alphabet.length; i++)
+		{
+			for(int j = 0; j < alphabet[i].getCount(); j++)
+			{
 				pool[count] = alphabet[i];
 				count++;
 			}
 		}
 		
-		for(int i = 0; i < pool.length; i++) {
+		for(int i = 0; i < pool.length; i++)
+		{
 			int randomPosition = generator.nextInt(pool.length);
 			Tile temp = pool[i];
 			pool[i] = pool[randomPosition];
@@ -71,7 +83,7 @@ public class Pool {
 	/**
 	 * Allows display of the number of tiles in the pool
 	 */
-	public int LeftInPool() {
+	public int leftInPool() {
 		return remainingTiles;
 	}
 	
@@ -90,16 +102,19 @@ public class Pool {
 	public Tile drawTileFromPool() {
 		Tile condition;
 		
-		if(isEmptyPool()) {
-			System.out.println("There is " + LeftInPool() + " tiles left.");
+		if(isEmptyPool())
+		{
+			System.out.println("There is " + leftInPool() + " tiles left.");
 			condition = new Tile();
 		}
 		
-		else {	
+		else
+		{	
 			int randomPosition = generator.nextInt(remainingTiles);
 			Tile draw = pool[randomPosition];
 			
-			for (int i = randomPosition; i < pool.length - 1; i++) {
+			for (int i = randomPosition; i < pool.length - 1; i++)
+			{
 				pool[i] = pool[i+1];
 			}
 			
@@ -110,23 +125,25 @@ public class Pool {
 	}
 	
 	/**
-	 * @param tile
-	 * @return
+	 * Allows tiles to be swapped at random from the pool
 	 */
-	
-	public Tile swapTileIntoPool(Tile tile) {
+	public Tile swapTileIntoPool(Tile tile)
+	{
 		Tile swapTile = new Tile();
 		
-		if(isEmptyPool()) {
-			System.out.println("There is " + LeftInPool() + " tiles left.");
+		if(isEmptyPool())
+		{
+			System.out.println("There is " + leftInPool() + " tiles left.");
 			swapTile = new Tile ();
 		}
 		
-		else {	
+		else
+		{	
 			int randomPosition = generator.nextInt(remainingTiles);
 			Tile draw = pool[randomPosition];
 			
-			for (int i = randomPosition; i < pool.length - 1; i++) {
+			for (int i = randomPosition; i < pool.length - 1; i++)
+			{
 				pool[i] = pool[i+1];
 			}
 			swapTile = draw;
@@ -142,8 +159,10 @@ public class Pool {
 	public int tileValueLookup(char letter) {
 		int value = 0;
 		
-		for(int i = 0; i < alphabet.length; i++) {
-			if(letter == alphabet[i].getLetter()) {
+		for(int i = 0; i < alphabet.length; i++)
+		{
+			if(letter == alphabet[i].getLetter())
+			{
 				value = alphabet[i].getValue();
 			}
 		}

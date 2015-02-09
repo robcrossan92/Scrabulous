@@ -1,6 +1,12 @@
 /**
- * Created by Robert Crossan.
- * Class used to describe the Tiles found in the Pool in the Scrabble game.
+ * Scrabulous
+ * 
+ * Created by:
+ * Robert Crossan (10306563)
+ * Niamh Kavanagh (12495522)
+ * David McCann (12431298)
+ * 
+ * Class used to represent the Tiles used to make words.
  */
 
 public class Tile {
@@ -26,6 +32,9 @@ public class Tile {
 		this.count = count;
 	}
 
+	/**
+	 * get and set Methods for the Tile's Letter
+	 */
 	public char getLetter() {
 		return letter;
 	}
@@ -34,6 +43,9 @@ public class Tile {
 		this.letter = letter;
 	}
 
+	/**
+	 * get and set Methods for the Tile's Value
+	 */
 	public int getValue() {
 		return value;
 	}
@@ -42,6 +54,9 @@ public class Tile {
 		this.value = value;
 	}
 
+	/**
+	 * get and set Methods for the Tile's Count
+	 */
 	public int getCount() {
 		return count;
 	}
@@ -49,7 +64,10 @@ public class Tile {
 	public void setCount(int count) {
 		this.count = count;
 	}
-
+	
+	/**
+	 * Override toString
+	 */
 	public String toString() {
 		return "Letter = " + letter + ", Value = " + value;
 	}
