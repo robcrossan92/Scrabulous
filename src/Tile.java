@@ -21,7 +21,7 @@ public class Tile {
 	private int value, count;
 	
 	public Tile() {
-		this.letter = '0';
+		this.letter = ' ';
 		this.value = 0;
 		this.count = 0;
 	}

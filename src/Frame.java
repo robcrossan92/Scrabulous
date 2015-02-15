@@ -16,7 +16,7 @@ class Frame {
 	 * @tilePool Allows Pool to accessible by all methods in the Frame
 	 * @frameArray Stores the Tiles currently in the Frame
 	 */
-	private final int FRAMESIZE = 7, total = 0;
+	private final int FRAMESIZE = 7, total;
 	private Pool tilePool;
 	private Tile[] frameArray = new Tile[FRAMESIZE];
 	
@@ -25,6 +25,7 @@ class Frame {
 	 * Stores the letters that each player has in their frame
 	 */
 	public Frame(Pool pool) {
+		total = 0;
 		tilePool = pool;
 		refillFrameFromPool();
 	}
