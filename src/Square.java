@@ -68,28 +68,26 @@ public class Square {
 	 */
 	public String toString() {
 		String display = "";
-		//if((getLetterMultiply() > 1) || (getWordMultiply() > 1)){
-			if(getLetterMultiply() > 1 ){
-				if(getPlacedTile().getLetter() == ' '){
-					display = "| " + getLetterMultiply() +  "l | ";
-				}
-				else{
-					display = "| " + getPlacedTile().getLetter() + " | ";
-				}
-			}
 		
-			else if(getWordMultiply() > 1){
-				if(getPlacedTile().getLetter() == ' '){
-					display = "| " + getWordMultiply() +  "w |  ";
-				}
-				else{
-					display = "| " + getPlacedTile().getLetter() + " | ";
-				}
+		if(getLetterMultiply() > 1 ) {
+			if(getPlacedTile().getLetter() == ' ') {
+				display = "| " + getLetterMultiply() +  "-L";
 			}
-			else{
-				display = "| " + getPlacedTile().getLetter() + " | ";
+			else {
+				display = "|  " + getPlacedTile().getLetter() + " ";
 			}
-		//}
-		return display;
+		}
+		else if(getWordMultiply() > 1) {
+			if(getPlacedTile().getLetter() == ' ') {
+				display = "| " + getWordMultiply() +  "-W";
+			}
+			else {
+				display = "|  " + getPlacedTile().getLetter() + " ";
+			}
+		}
+		else {
+			display = "|  " + getPlacedTile().getLetter() + " ";
+		}
+		return display ;
 	}
 }

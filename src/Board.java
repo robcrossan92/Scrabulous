@@ -1,5 +1,3 @@
-import java.util.Scanner;
-
 /**
  * Scrabulous
  * 
@@ -162,12 +160,13 @@ public class Board {
 	public String toString(){
 		String board1 = "";
 		for(int i = 0; i < DIMENSION; i++){
-			board1 = board1 + "--------------------------------------------------------------------------------------------------------------------- \n";
+			board1 = board1 + "------------------------------------------------------------------------------------------- \n";
 			for(int j = 0; j < DIMENSION; j++){
 				board1 = board1 + board[i][j] + " ";
 			}
-			board1 = board1 + "\n";
+			board1 = board1 + "|\n";
 		}
+		board1 = board1 + "------------------------------------------------------------------------------------------- \n";
 		return board1;
 	}
 }
