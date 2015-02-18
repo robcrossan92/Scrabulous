@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 /**
  * Scrabulous
  * 
@@ -16,12 +18,14 @@ public class Board {
 	 */
 	private final int DIMENSION = 15;
 	private Square[][] board = new Square[DIMENSION][DIMENSION];
+	private int turnCount = 0;
+	Pool pool = Player.getPlayerPool();
 	
 	/**
 	 * Constructor
 	 * Resets the Board to Reset the game and then sets the Squares Multipliers
 	 */
-	Board () {
+	Board() {
 		resetBoard();
 		setMultipliers();
 	}
@@ -54,5 +58,112 @@ public class Board {
 		for(int i = 0, j = 0; i < tripleLetter.length; i++) {board[tripleLetter[i][j]][tripleLetter[i][j+1]].setLetterMultiply(3);}
 		for(int i = 0, j = 0; i < doubleWord.length; i++) {board[doubleWord[i][j]][doubleWord[i][j+1]].setWordMultiply(2);}
 		for(int i = 0, j = 0; i < tripleWord.length; i++) {board[tripleWord[i][j]][tripleWord[i][j+1]].setWordMultiply(3);}
+	}
+	/** Checks the player's frame for the necessary tiles to 
+	 * make up a word.
+	 */
+	public boolean checkFrameForWord(Player player, String word){
+		boolean check = false;
+		int count = 0;
+		for(int j = 0; j < word.length(); j++){
+			char checkedLetter = word.charAt(j);
+			for(int i = 0; i < 7; i++){
+				if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
+					count++;
+					break;
+				}
+			}
+		}
+		if(count == word.length()){
+			check = true;
+		}
+		if(count < word.length()){
+			check = false;
+		}
+		return check;
+	}
+	
+	/** Check whether the first word is placed on centre square.
+	 */
+	public boolean checkFirstWordOnCentre(String word){
+		boolean check = false;
+		if(turnCount == 1){
+			int count = 0;
+			for(int j = 0; j < word.length(); j++){
+				char checkedLetter = word.charAt(j);
+				if(checkedLetter == board[7][7].getPlacedTile().getLetter()){
+					count++;
+				}
+			}
+			if(count == 0){
+				check = false;
+			}
+			if(count > 0){
+				check = true;
+			}
+		}
+		return check;
+	}
+	/** Places a word from left to right at a given position
+	 * and replaces the used Tiles.
+	 */
+	public void placeRight(int row, int column, String word, Player player){
+		if(checkFrameForWord(player, word) == true){
+			turnCount++;
+			for(int j = 0; j < word.length(); j++){
+				char checkedLetter = word.charAt(j);
+				for(int i = 0; i < 7; i++){
+					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
+						if(' ' == board[row][column].getPlacedTile().getLetter()){
+							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							player.getPlayerFrame().replaceTilesInFrame(i+1);
+							column++;
+							break;
+						}
+						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							column++;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	/** Places a word down from a given position
+	 * and replaces the used Tiles.
+	 */
+	public void placeDown(int row, int column, String word, Player player){
+		if(checkFrameForWord(player, word) == true){
+			turnCount++;
+			for(int j = 0; j < word.length(); j++){
+				char checkedLetter = word.charAt(j);
+				for(int i = 0; i < 7; i++){
+					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
+						if(' ' == board[row][column].getPlacedTile().getLetter()){
+							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							player.getPlayerFrame().replaceTilesInFrame(i+1);
+							row++;
+							break;
+						}
+						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							row++;
+							break;
+						}
+					}
+				}
+			}
+		}
+	}
+	public String toString(){
+		String board1 = "";
+		for(int i = 0; i < DIMENSION; i++){
+			for(int j = 0; j < DIMENSION; j++){
+				board1 = board1 + board[i][j] + " ";
+			}
+			board1 = board1 + "\n";
+		}
+		return board1;
 	}
 }
