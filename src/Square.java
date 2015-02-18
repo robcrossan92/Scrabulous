@@ -67,11 +67,29 @@ public class Square {
 	 * Override toString
 	 */
 	public String toString() {
-		return "| " + getPlacedTile().getLetter() + " |  ";
+		String display = "";
+		//if((getLetterMultiply() > 1) || (getWordMultiply() > 1)){
+			if(getLetterMultiply() > 1 ){
+				if(getPlacedTile().getLetter() == ' '){
+					display = "| " + getLetterMultiply() +  "l | ";
+				}
+				else{
+					display = "| " + getPlacedTile().getLetter() + " | ";
+				}
+			}
 		
-		
-		/**return "  ---  \n" +
-			   " | " + getPlacedTile().getLetter() + " | \n" +
-			   "  ---  ";*/
+			else if(getWordMultiply() > 1){
+				if(getPlacedTile().getLetter() == ' '){
+					display = "| " + getWordMultiply() +  "w |  ";
+				}
+				else{
+					display = "| " + getPlacedTile().getLetter() + " | ";
+				}
+			}
+			else{
+				display = "| " + getPlacedTile().getLetter() + " | ";
+			}
+		//}
+		return display;
 	}
 }

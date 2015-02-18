@@ -114,14 +114,14 @@ public class Board {
 				char checkedLetter = word.charAt(j);
 				for(int i = 0; i < 7; i++){
 					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
-						if(' ' == board[row][column].getPlacedTile().getLetter()){
-							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+						if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
+							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 							player.getPlayerFrame().replaceTilesInFrame(i+1);
 							column++;
 							break;
 						}
 						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 							column++;
 							break;
 						}
@@ -140,14 +140,14 @@ public class Board {
 				char checkedLetter = word.charAt(j);
 				for(int i = 0; i < 7; i++){
 					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
-						if(' ' == board[row][column].getPlacedTile().getLetter()){
-							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+						if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
+							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 							player.getPlayerFrame().replaceTilesInFrame(i+1);
 							row++;
 							break;
 						}
 						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row][column].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 							row++;
 							break;
 						}
@@ -162,6 +162,7 @@ public class Board {
 	public String toString(){
 		String board1 = "";
 		for(int i = 0; i < DIMENSION; i++){
+			board1 = board1 + "--------------------------------------------------------------------------------------------------------------------- \n";
 			for(int j = 0; j < DIMENSION; j++){
 				board1 = board1 + board[i][j] + " ";
 			}

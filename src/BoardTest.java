@@ -14,7 +14,6 @@ import javax.swing.JOptionPane;
 public class BoardTest {
 
 	public static void main(String[] args) {
-		//int CENTRE = 7;
 		Board board = new Board();
 		Player Player1 = new Player("P1Name");
 		//Player Player2 = new Player("P2Name");
@@ -22,7 +21,7 @@ public class BoardTest {
 		System.out.println(Player1.getPlayerFrame());
 		String word = JOptionPane.showInputDialog(null, "Enter word:");
 		System.out.println(board.checkFrameForWord(Player1, word));
-		board.placeDown(7, 7, word, Player1);
+		board.placeDown(8, 8, word, Player1);
 		System.out.println(board);
 		System.out.println(board.checkFirstWordOnCentre(word));
 		//System.out.println(board.checkFrameForWord(board.getPlayer1(), board.getPlayer1().enterWord(word)));
