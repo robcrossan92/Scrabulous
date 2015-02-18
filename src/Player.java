@@ -39,7 +39,11 @@ public class Player {
 	public String getPlayerName() {
 		return playerName;
 	}
- 
+	
+	public String enterWord(String word){
+		//String word = JOptionPane.showInputDialog(null, "Enter word:");
+		return word;
+	}
 	/**
 	 * Allows the name of the player to be set
 	 */
