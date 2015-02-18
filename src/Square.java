@@ -66,9 +66,12 @@ public class Square {
 	/**
 	 * Override toString
 	 */
-	public String toString() { 
-		return "  ---  \n" +
-			   " | " + getWordMultiply() + " | \n" +
-			   "  ---  ";
+	public String toString() {
+		return "| " + getPlacedTile().getLetter() + " |  ";
+		
+		
+		/**return "  ---  \n" +
+			   " | " + getPlacedTile().getLetter() + " | \n" +
+			   "  ---  ";*/
 	}
 }
