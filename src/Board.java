@@ -156,6 +156,9 @@ public class Board {
 			}
 		}
 	}
+	/** Override toString method
+	 * 
+	 */
 	public String toString(){
 		String board1 = "";
 		for(int i = 0; i < DIMENSION; i++){

@@ -21,6 +21,7 @@ public class BoardTest {
 		System.out.println(board);
 		System.out.println(Player1.getPlayerFrame());
 		String word = JOptionPane.showInputDialog(null, "Enter word:");
+		System.out.println(board.checkFrameForWord(Player1, word));
 		board.placeDown(7, 7, word, Player1);
 		System.out.println(board);
 		System.out.println(board.checkFirstWordOnCentre(word));
