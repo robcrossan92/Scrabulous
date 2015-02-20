@@ -15,10 +15,12 @@ public class BoardTest {
 
 	public static void main(String[] args) {
 		Board board = new Board();
+		
 		Player Player1 = new Player("P1Name");
-		//Player Player2 = new Player("P2Name");
+		Player Player2 = new Player("P2Name");
+		
 		System.out.println(board);
-		System.out.println(Player1.getPlayerFrame());
+		System.out.println("Player 1:\n" + Player1.getPlayerFrame());
 		String word = JOptionPane.showInputDialog(null, "Enter word:");
 		System.out.println(board.isWordInFrame(Player1, word));
 		board.playWord(8, 8, word, Player1, 'd');

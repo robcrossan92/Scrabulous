@@ -214,18 +214,6 @@ public class Board {
 		}
 	}
 	
-	/**
-	 *Runs remaining checks
-	 */
-	public boolean checks (int row, int column, String word, Player player, char playDirection, int i) {
-		if (turnCount == 0) {
-			isFirstWordOnCentre(word);
-		}
-		isWordConflicting(row, column, word, player, playDirection);
-		isWordWithinBounds(row, column, word);
-		return false;	
-	}
-	
 	/** 
 	 * Override toString method
 	 */
