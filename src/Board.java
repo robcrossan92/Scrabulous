@@ -215,7 +215,7 @@ public class Board {
 	}
 	
 	/**
-	 *
+	 *Runs remaining checks
 	 */
 	public boolean checks (int row, int column, String word, Player player, char playDirection, int i) {
 		if (turnCount == 0) {
