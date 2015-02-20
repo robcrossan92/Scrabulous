@@ -140,54 +140,49 @@ public class Board {
 		}
 		return check;	
 	}
-
-	
-	/** Places a word from left to right at a given position
-	 * and replaces the used Tiles.
+	/** Method which plays a users move. Takes in player, word, position
+	 * and direction user wants to play.
 	 */
-	public void placeRight(int row, int column, String word, Player player){
+	public void Play(int row, int column, String word, Player player, char playDirection){
 		if(checkFrameForWord(player, word) == true){
-			turnCount++;
-			for(int j = 0; j < word.length(); j++){
-				char checkedLetter = word.charAt(j);
-				for(int i = 0; i < 7; i++){
-					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
-						if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-							player.getPlayerFrame().replaceTilesInFrame(i+1);
-							column++;
-							break;
-						}
-						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-							column++;
-							break;
+			if(playDirection == 'r' || playDirection == 'R'){
+				turnCount++;
+				for(int j = 0; j < word.length(); j++){
+					char checkedLetter = word.charAt(j);
+					for(int i = 0; i < 7; i++){
+						if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
+							if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
+								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								player.getPlayerFrame().replaceTilesInFrame(i+1);
+								column++;
+								break;
+							}
+							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								column++;
+								break;
+							}
 						}
 					}
 				}
 			}
-		}
-	}
-	/** Places a word down from a given position
-	 * and replaces the used Tiles.
-	 */
-	public void placeDown(int row, int column, String word, Player player){
-		if(checkFrameForWord(player, word) == true){
-			turnCount++;
-			for(int j = 0; j < word.length(); j++){
-				char checkedLetter = word.charAt(j);
-				for(int i = 0; i < 7; i++){
-					if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
-						if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-							player.getPlayerFrame().replaceTilesInFrame(i+1);
-							row++;
-							break;
-						}
-						else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-							board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-							row++;
-							break;
+			if(playDirection == 'd' || playDirection == 'D'){
+				turnCount++;
+				for(int j = 0; j < word.length(); j++){
+					char checkedLetter = word.charAt(j);
+					for(int i = 0; i < 7; i++){
+						if(checkedLetter == player.getPlayerFrame().getTileFromFrame(i+1).getLetter()){
+							if(' ' == board[row-1][column-1].getPlacedTile().getLetter()){
+								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								player.getPlayerFrame().replaceTilesInFrame(i+1);
+								row++;
+								break;
+							}
+							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								row++;
+								break;
+							}
 						}
 					}
 				}
