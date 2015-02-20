@@ -105,7 +105,7 @@ public class Board {
 	
 	/**Check whether placement is within bounds of board
 	 */
-	public boolean checkWordWithinBoardBounds(String word, int row, int column){
+	public boolean checkWordWithinBoardBounds(int row, int column, String word){
 		boolean check = false;
 		if(word.length() + row > 15 || word.length() + column > 15){
 			check = false;
@@ -117,33 +117,54 @@ public class Board {
 	
 	/**Checks if word conflicts with existing letters
 	 */
-	public boolean checkNoConflictsWithExistingLetters (String word, Player player, int row, int column){
+	public boolean checkNoConflictsWithExistingLetters (int row, int column, String word, Player player, char playDirection){
 		boolean check = false;
-		for (int i = 0; i <word.length(); i++){
+		for (int i = 0; i < word.length(); i++)
+		{
 			char checkedLetter = word.charAt(i);
 			
-			for (){
-				
+			if(playDirection == 'r' || playDirection == 'R')
+			{
+				for (int j = column; j < word.length() + column; j++)
+				{
+					if(checkedLetter == board[row][j].getPlacedTile().getLetter())
+					{
+						check = true;
+					}
+					
+				}
 			}
+				else if(playDirection == 'd' || playDirection == 'D')
+				{
+					for (int j = row; j < word.length() + row; j++)
+					{
+						if(checkedLetter == board[j][column].getPlacedTile().getLetter())
+						{
+						check = true;
+						}
+					}
+				}
 		}
-		//player.getPlayerFrame().getTileFromFrame(i+1).getLetter()
 		return check;
 	}
 	
-	
-	/**Checks if word connects with words on the board
+	/**Checks if word connects with other words on the board
 	 */
-	public boolean checkWordConnectsWithOtherWord(String word){
+	public boolean checkWordConnectsWithOtherWord(int connectCounter, char playDirection){
 		boolean check = false;
-		if(turnCount != 1){
-			
-		}
-		return check;	
-	}
+		if(playDirection == 'd' || playDirection == 'D'){
+			if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+				board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+				row++;
+				connectCounter++;
+				return check;	
+			}
+	
 	/** Method which plays a users move. Takes in player, word, position
 	 * and direction user wants to play.
 	 */
-	public void Play(int row, int column, String word, Player player, char playDirection){
+	public int Play(int row, int column, String word, Player player, char playDirection){
+		int connectCounter = 0;
 		if(checkFrameForWord(player, word) == true){
 			if(playDirection == 'r' || playDirection == 'R'){
 				turnCount++;
@@ -160,11 +181,13 @@ public class Board {
 							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								column++;
+								connectCounter++;
 								break;
 							}
 						}
 					}
 				}
+				
 			}
 			if(playDirection == 'd' || playDirection == 'D'){
 				turnCount++;
@@ -181,14 +204,34 @@ public class Board {
 							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								row++;
+								connectCounter++;
 								break;
 							}
 						}
 					}
 				}
 			}
-		}
+		}return connectCounter;
 	}
+	
+	public boolean Checks (int row, int column, String word, Player player, char playDirection, int connectCounter){
+		if (turnCount == 0)
+		{
+			checkFirstWordOnCentre(word);
+		}
+		
+		checkFrameForWord(player, word);
+		checkWordConnectsWithOtherWord(connectCounter);
+		checkNoConflictsWithExistingLetters(row, column, word, player, playDirection);
+		checkWordWithinBoardBounds(row, column, word);
+		
+		
+		return false;
+		
+	}
+	
+	
+	
 	/** Override toString method
 	 * 
 	 */
