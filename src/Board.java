@@ -152,16 +152,24 @@ public class Board {
 	/**
 	 * Checks if word connects with words on the board
 	 */
-	public boolean checkWordConnectsWithOtherWord(int connectCounter, char playDirection){
+	public boolean checkWordConnectsWithOtherWord(int row, int column, Player player, char checkedLetter, char playDirection, int i){
+
 		boolean check = false;
 		if(playDirection == 'd' || playDirection == 'D'){
 			if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 				board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 				row++;
-				connectCounter++;
-				return check;	
+				check = true;
+			}	
+		}
+		if(playDirection == 'r' || playDirection == 'R'){
+			if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+				board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+				column++;
+				check = true;
 			}
-		return check;	
+		}
+		return check;
 	}
 	
 	/** Method which plays a users move. Takes in player, word, position
@@ -182,12 +190,14 @@ public class Board {
 								column++;
 								break;
 							}
-							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
+							else{
+								checkWordConnectsWithOtherWord(row, column, player, checkedLetter, playDirection, i);
+							}
+							/**else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								column++;
-								connectCounter++;
 								break;
-							}
+							}*/
 						}
 					}
 				}
@@ -205,19 +215,21 @@ public class Board {
 								row++;
 								break;
 							}
+							else{
+								checkWordConnectsWithOtherWord(row, column, player, checkedLetter, playDirection, i);
+							}
+							/**
 							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								row++;
-								connectCounter++;
 								break;
-							}
+							}*/
 						}
 					}
 				}
 			}
 		}return connectCounter;
 	}
-	
 	public boolean Checks (int row, int column, String word, Player player, char playDirection, int connectCounter){
 		if (turnCount == 0)
 		{
@@ -225,10 +237,13 @@ public class Board {
 		}
 		
 		checkFrameForWord(player, word);
-		checkWordConnectsWithOtherWord(connectCounter);
+		//checkWordConnectsWithOtherWord(connectCounter);
 		checkNoConflictsWithExistingLetters(row, column, word, player, playDirection);
 		checkWordWithinBoardBounds(row, column, word);
+		
+		
 		return false;
+		
 	}
 	
 	/** Override toString method
