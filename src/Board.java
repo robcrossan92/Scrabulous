@@ -57,6 +57,7 @@ public class Board {
 		for(int i = 0, j = 0; i < doubleWord.length; i++) {board[doubleWord[i][j]][doubleWord[i][j+1]].setWordMultiply(2);}
 		for(int i = 0, j = 0; i < tripleWord.length; i++) {board[tripleWord[i][j]][tripleWord[i][j+1]].setWordMultiply(3);}
 	}
+	
 	/** Checks the player's frame for the necessary tiles to 
 	 * make up a word.
 	 */
@@ -148,7 +149,8 @@ public class Board {
 		return check;
 	}
 	
-	/**Checks if word connects with other words on the board
+	/**
+	 * Checks if word connects with words on the board
 	 */
 	public boolean checkWordConnectsWithOtherWord(int connectCounter, char playDirection){
 		boolean check = false;
@@ -159,6 +161,8 @@ public class Board {
 				connectCounter++;
 				return check;	
 			}
+		return check;	
+	}
 	
 	/** Method which plays a users move. Takes in player, word, position
 	 * and direction user wants to play.
@@ -224,13 +228,8 @@ public class Board {
 		checkWordConnectsWithOtherWord(connectCounter);
 		checkNoConflictsWithExistingLetters(row, column, word, player, playDirection);
 		checkWordWithinBoardBounds(row, column, word);
-		
-		
 		return false;
-		
 	}
-	
-	
 	
 	/** Override toString method
 	 * 
