@@ -102,6 +102,46 @@ public class Board {
 		}
 		return check;
 	}
+	
+	/**Check whether placement is within bounds of board
+	 */
+	public boolean checkWordWithinBoardBounds(String word, int row, int column){
+		boolean check = false;
+		if(word.length() + row > 15 || word.length() + column > 15){
+			check = false;
+		} else {
+			check = true;
+		}
+		return check;
+	}
+	
+	/**Checks if word conflicts with existing letters
+	 */
+	public boolean checkNoConflictsWithExistingLetters (String word, Player player, int row, int column){
+		boolean check = false;
+		for (int i = 0; i <word.length(); i++){
+			char checkedLetter = word.charAt(i);
+			
+			for (){
+				
+			}
+		}
+		//player.getPlayerFrame().getTileFromFrame(i+1).getLetter()
+		return check;
+	}
+	
+	
+	/**Checks if word connects with words on the board
+	 */
+	public boolean checkWordConnectsWithOtherWord(String word){
+		boolean check = false;
+		if(turnCount != 1){
+			
+		}
+		return check;	
+	}
+
+	
 	/** Places a word from left to right at a given position
 	 * and replaces the used Tiles.
 	 */
