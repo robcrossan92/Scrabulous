@@ -153,30 +153,18 @@ public class Board {
 	 * Checks if word connects with words on the board
 	 */
 	public boolean checkWordConnectsWithOtherWord(int row, int column, Player player, char checkedLetter, char playDirection, int i){
-
 		boolean check = false;
-		if(playDirection == 'd' || playDirection == 'D'){
 			if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
 				board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-				row++;
-				check = true;
-			}	
-		}
-		if(playDirection == 'r' || playDirection == 'R'){
-			if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-				board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
-				column++;
 				check = true;
 			}
-		}
 		return check;
 	}
 	
 	/** Method which plays a users move. Takes in player, word, position
 	 * and direction user wants to play.
 	 */
-	public int Play(int row, int column, String word, Player player, char playDirection){
-		int connectCounter = 0;
+	public void Play(int row, int column, String word, Player player, char playDirection){
 		if(checkFrameForWord(player, word) == true){
 			if(playDirection == 'r' || playDirection == 'R'){
 				turnCount++;
@@ -192,12 +180,9 @@ public class Board {
 							}
 							else{
 								checkWordConnectsWithOtherWord(row, column, player, checkedLetter, playDirection, i);
-							}
-							/**else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								column++;
 								break;
-							}*/
+							}
 						}
 					}
 				}
@@ -217,18 +202,14 @@ public class Board {
 							}
 							else{
 								checkWordConnectsWithOtherWord(row, column, player, checkedLetter, playDirection, i);
-							}
-							/**
-							else if(checkedLetter==board[row-1][column-1].getPlacedTile().getLetter()){
-								board[row-1][column-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
 								row++;
 								break;
-							}*/
+							}
 						}
 					}
 				}
 			}
-		}return connectCounter;
+		}
 	}
 	public boolean Checks (int row, int column, String word, Player player, char playDirection, int connectCounter){
 		if (turnCount == 0)
