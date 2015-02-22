@@ -30,6 +30,12 @@ class Frame {
 		refillFrameFromPool();
 	}
 		
+	/**
+	 * Returns size of Frame
+	 */
+	public int size() {
+		return FRAMESIZE;
+	}
 
 	/**
 	 * Allows letters to be removed from a frame and replaced with another one
