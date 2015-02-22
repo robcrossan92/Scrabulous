@@ -11,10 +11,6 @@
 
 /**
  * To Do:
- * check if word overlaps (i.e. strict with -ly appended to strictly) - Rob
- * check if word is parallel (i.e. c a t
- * 								     t o m a t o) - Rob
- * numbering on side of board (change toString())- Rob
  * giving blank tiles a value (possibly setBlankTile() method?)- Rob
  *
  */
@@ -71,7 +67,7 @@ public class Board {
 	}
 	
 	/** 
-	 * Checks the player's frame for the necessary tiles to make up a word.
+	 * Checks the player's frame for the necessary tiles to make up a word
 	 */
 	public boolean isWordInFrame(int row, int col, String word, Player player, char direction) {
 		boolean check = false;
@@ -79,6 +75,7 @@ public class Board {
 		
 		for(int i = 0; i < word.length(); i++) {
 			char checkLetter = word.charAt(i);
+			
 			if((direction == 'r') || (direction == 'R')) {
 				for(int j = 0; j < player.getPlayerFrame().size(); j++) {
 					if(checkLetter == player.getPlayerFrame().getTileFromFrame(j+1).getLetter()) {
@@ -104,6 +101,7 @@ public class Board {
 				}
 			}
 		}
+		
 		if(count == word.length()) {
 			check = true;
 		}
@@ -148,6 +146,7 @@ public class Board {
 		}
 		return check;
 	}
+	
 	/**
 	 * Check whether at least one letter from the rack is used
 	 */
@@ -209,6 +208,29 @@ public class Board {
 		return check;
 	}
 		
+	/**
+	 * Checks if word is parallel
+	 */
+	public boolean isWordParallel(int row, int col, String word, Player player, char direction ) {
+		boolean check = false;
+		
+		if((direction == 'r') || (direction == 'R')) {
+			for(int i = col; i < (word.length()-1) + col; i++) {
+				if ((' ' != board[row+1][i].getPlacedTile().getLetter()) || (' ' !=  board[row-1][i].getPlacedTile().getLetter())){
+					check = true;
+				}
+			}
+		}
+		if((direction == 'd') || (direction == 'D')) {
+			for(int i = row; i < (word.length()-1) + row; i++) {
+				if ((' ' != board[i][col+1].getPlacedTile().getLetter()) || (' ' !=  board[i][col-1].getPlacedTile().getLetter())){
+					check = true;
+				}
+			}
+		}
+		return check;
+	}
+
 	/** 
 	 * Method which plays a users move. Takes in player, word, position and direction user wants to play.
 	 */
@@ -254,7 +276,7 @@ public class Board {
 								break;
 							}
 							else if(checkLetter==board[row-1][col-1].getPlacedTile().getLetter()){
-								board[row-1][col-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								board[row-1][col-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(j+1));
 								row++;
 								break;
 							}
@@ -269,30 +291,6 @@ public class Board {
 			turnCount++;
 		}
 	}
-	
-	/**
-	 * Checks if word is parallel
-	 */
-	public boolean isWordParallel(int row, int col, String word, Player player, char direction ) {
-		boolean check = false;
-		
-		if((direction == 'r') || (direction == 'R')) {
-			for(int i = col; i < (word.length()-1) + col; i++) {
-				if ((' ' != board[row+1][i].getPlacedTile().getLetter()) || (' ' !=  board[row-1][i].getPlacedTile().getLetter())){
-					check = true;
-				}
-			}
-		}
-		if((direction == 'd') || (direction == 'D')) {
-			for(int i = row; i < (word.length()-1) + row; i++) {
-				if ((' ' != board[i][col+1].getPlacedTile().getLetter()) || (' ' !=  board[i][col-1].getPlacedTile().getLetter())){
-					check = true;
-				}
-			}
-		}
-		return check;
-	}
-	
 	
 	/** 
 	 * Displays the current board using ASCII characters on the console
