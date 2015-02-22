@@ -213,8 +213,8 @@ public class Board {
 	 * Method which plays a users move. Takes in player, word, position and direction user wants to play.
 	 */
 	public void playWord(int row, int col, String word, Player player, char direction) {
-		//if(isWordInFrame(player, word) == true) {
-			//System.out.println("Is word in frame: " + isWordInFrame(player, word));
+		if(isWordInFrame(row, col, word, player, direction) == true) {
+			System.out.println("Is word in frame: " + isWordInFrame(row, col, word, player, direction));
 			
 			if((direction == 'r') || (direction == 'R')) {
 				for(int i = 0; i < word.length(); i++) {
@@ -268,7 +268,7 @@ public class Board {
 			}
 			turnCount++;
 		}
-	//}
+	}
 	
 	/**
 	 * Checks if word is parallel
