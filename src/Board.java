@@ -235,6 +235,10 @@ public class Board {
 								break;
 							}
 						}
+						else if(checkLetter== board[row-1][col-1].getPlacedTile().getLetter()){
+							col++;
+							break;
+						}
 					}
 				}
 			}
@@ -255,6 +259,10 @@ public class Board {
 								row++;
 								break;
 							}
+						}
+						else if(checkLetter== board[row-1][col-1].getPlacedTile().getLetter()){
+							row++;
+							break;
 						}
 					}
 				}
