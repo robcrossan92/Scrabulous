@@ -230,12 +230,12 @@ public class Board {
 								break;
 							}
 							else if(checkLetter==board[row-1][col-1].getPlacedTile().getLetter()){
-								board[row-1][col-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(i+1));
+								board[row-1][col-1].setPlacedTile(player.getPlayerFrame().getTileFromFrame(j+1));
 								col++;
 								break;
 							}
 						}
-						else if(checkLetter== board[row-1][col-1].getPlacedTile().getLetter()){
+						else if(checkLetter == board[row-1][col-1].getPlacedTile().getLetter()){
 							col++;
 							break;
 						}

@@ -17,8 +17,8 @@ public class BoardTest {
 		//Stores the current tile positions, stores the square values (e.g. triple word score)
 		Board board = new Board();
 		int row1 = 8, row2 = 8;
-		int col1 = 8, col2 = 7;
-		char dir1 = 'd', dir2 = 'R';
+		int col1 = 8, col2 = 8;
+		char dir1 = 'd', dir2 = 'd';
 		
 		Player player1 = new Player("P1Name");
 		Player player2 = new Player("P2Name");
