@@ -235,7 +235,7 @@ public class Board {
 								break;
 							}
 						}
-						else if(checkLetter== board[row-1][col-1].getPlacedTile().getLetter()){
+						else if(checkLetter == board[row-1][col-1].getPlacedTile().getLetter()){
 							col++;
 							break;
 						}
