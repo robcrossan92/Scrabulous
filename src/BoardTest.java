@@ -33,7 +33,7 @@ public class BoardTest {
 		System.out.println("Is first word on centre: " + board.isFirstWordOnCentre(word1));							//Expected true
 		System.out.println("Is word within bounds: " + board.isWordWithinBounds(row1, col1, word1));				//Expected true
 		System.out.println("Is word conflicted: " + board.isWordConflicted(row1, col1, word1, player1, dir1));	//Expected false
-		System.out.println("Is word connected: " + board.isWordConnected(row1, col1, word1, player1, dir1));	//Expected false
+		System.out.println("Is word connected: " + board.isWordCrossing(row1, col1, word1, player1, dir1));	//Expected false
 		System.out.println(board);
 		
 		//Player 2 - Turn 2
@@ -43,7 +43,7 @@ public class BoardTest {
 		System.out.println("Is first word on centre: " + board.isFirstWordOnCentre(word2));							//Expected false
 		System.out.println("Is word within bounds: " + board.isWordWithinBounds(row2, col2, word2));				//Expected false
 		System.out.println("Is word conflicted: " + board.isWordConflicted(row2, col2, word2, player2, dir2));	//Expected false
-		System.out.println("Is word connected: " + board.isWordConnected(row2, col2, word2, player2, dir2));	//Expected false
+		System.out.println("Is word connected: " + board.isWordCrossing(row2, col2, word2, player2, dir2));	//Expected false
 		System.out.println(board);
 		
 		//Player 1 - Turn 2

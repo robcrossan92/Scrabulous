@@ -12,8 +12,8 @@
 /**
  * To Do:
  * check if word overlaps (i.e. strict with -ly appended to strictly) - Rob
- * check if word is parallel (i.e. a t
- * 								   t o m a t o) - Rob
+ * check if word is parallel (i.e. c a t
+ * 								     t o m a t o) - Rob
  * numbering on side of board (change toString())- Rob
  * giving blank tiles a value (possibly setBlankTile() method?)- Rob
  *
@@ -112,17 +112,21 @@ public class Board {
 	public boolean isWordConflicted(int row, int col, String word, Player player, char direction) {
 		boolean check = false;
 
-		if((direction == 'r') || (direction == 'R')) {
-			for (int j = col; j < (word.length()-1) + col; j++) {
-				if(' ' != board[row][j].getPlacedTile().getLetter()) {
-					check = true;
+		for(int i = 0; i < word.length(); i++) {
+			char checkLetter = word.charAt(i);
+			
+			if((direction == 'r') || (direction == 'R')) {
+				for (int j = col; j < (word.length()-1) + col; j++) {
+					if(checkLetter != board[row][j].getPlacedTile().getLetter()) {
+						check = true;
+					}	
 				}
 			}
-		}
-		if((direction == 'd') || (direction == 'D')) {
-			for (int j = row; j < (word.length()-1) + row; j++) {
-				if(' ' != board[j][col].getPlacedTile().getLetter()) {
-					check = true;
+			if((direction == 'd') || (direction == 'D')) {
+				for (int j = row; j < (word.length()-1) + row; j++) {
+					if(checkLetter != board[j][col].getPlacedTile().getLetter()) {
+						check = true;
+					}
 				}
 			}
 		}
@@ -166,7 +170,7 @@ public class Board {
 	/**
 	 * Checks if word connected with existing words
 	 */
-	public boolean isWordConnected(int row, int col, String word, Player player, char direction) {
+	public boolean isWordCrossing(int row, int col, String word, Player player, char direction) {
 		boolean check = false;
 		
 		for(int i = 0; i < word.length(); i++) {
@@ -194,8 +198,8 @@ public class Board {
 	 * Method which plays a users move. Takes in player, word, position and direction user wants to play.
 	 */
 	public void playWord(int row, int col, String word, Player player, char direction) {
-		if(isWordInFrame(player, word) == true) {
-			System.out.println("Is word in frame: " + isWordInFrame(player, word));
+		//if(isWordInFrame(player, word) == true) {
+			//System.out.println("Is word in frame: " + isWordInFrame(player, word));
 			
 			if((direction == 'r') || (direction == 'R')) {
 				for(int i = 0; i < word.length(); i++) {
@@ -241,7 +245,7 @@ public class Board {
 			}
 			turnCount++;
 		}
-	}
+	//}
 	
 	/** 
 	 * Displays the current board using ASCII characters on the console
