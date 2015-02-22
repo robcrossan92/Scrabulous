@@ -148,7 +148,6 @@ public class Board {
 		}
 		return check;
 	}
-	
 	/**
 	 * Check whether at least one letter from the rack is used
 	 */
