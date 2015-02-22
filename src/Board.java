@@ -73,21 +73,37 @@ public class Board {
 	/** 
 	 * Checks the player's frame for the necessary tiles to make up a word.
 	 */
-	public boolean isWordInFrame(Player player, String word) {
+	public boolean isWordInFrame(int row, int col, String word, Player player, char direction) {
 		boolean check = true;
 		int count = 0;
 		
 		for(int i = 0; i < word.length(); i++) {
 			char checkLetter = word.charAt(i);
-			
-			for(int j = 0; j < player.getPlayerFrame().size(); j++) {
-				if(checkLetter == player.getPlayerFrame().getTileFromFrame(j+1).getLetter()) {
-					count++;
-					break;
+			if((direction == 'r') || (direction == 'R')) {
+				for(int j = 0; j < player.getPlayerFrame().size(); j++) {
+					if(checkLetter == player.getPlayerFrame().getTileFromFrame(j+1).getLetter()) {
+						count++;
+						break;
+					}
+					else if(checkLetter == board[row][col+j].getPlacedTile().getLetter()){
+						count++;
+						break;
+					}
+				}
+			}
+			if((direction == 'd') || (direction == 'D')) {
+				for(int j = 0; j < player.getPlayerFrame().size(); j++) {
+					if(checkLetter == player.getPlayerFrame().getTileFromFrame(j+1).getLetter()) {
+						count++;
+						break;
+					}
+					else if(checkLetter == board[row+j][col].getPlacedTile().getLetter()){
+						count++;
+						break;
+					}
 				}
 			}
 		}
-
 		if(count == word.length()) {
 			check = true;
 		}
