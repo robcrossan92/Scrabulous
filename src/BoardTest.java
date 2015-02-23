@@ -16,9 +16,9 @@ public class BoardTest {
 	public static void main(String[] args) {
 		//Stores the current Tile positions, stores the Square values
 		Board board = new Board();
-		int row1 = 8, row2 = 8, row3 = 10, row4 = 15;
-		int col1 = 8, col2 = 7, col3 = 9, col4 = 6;
-		char dir1 = 'd', dir2 = 'r', dir3 = 'd', dir4 = 'r';
+		int row1 = 8, row2 = 8, row3 = 10;
+		int col1 = 8, col2 = 8, col3 = 9;
+		char dir1 = 'd', dir2 = 'r', dir3 = 'd';
 		String word = " ";
 		
 		Player player = new Player("Player 1");
@@ -61,17 +61,6 @@ public class BoardTest {
 		board.playWord(row3, col3, word, player, dir3);
 		System.out.println("Is word within bounds: " + board.isWordWithinBounds(row3, col3, word));
 		System.out.println("is word conflicting with other words: " + board.isWordConflicted(row3, col3, word, player, dir3));
-		System.out.println("Is at least one letter used: " + board.isLetterPlayed(word));
-		System.out.println("Is first word on centre: " + board.isFirstWordOnCentre(word));
-		System.out.println();
-
-		//Turn 4
-		System.out.println(board);
-		System.out.println(player + ":\n" + player.getPlayerFrame());
-		word = JOptionPane.showInputDialog(null, "Enter word:");
-		board.playWord(row4, col4, word, player, dir4);
-		System.out.println("Is word within bounds: " + board.isWordWithinBounds(row4, col4, word));
-		System.out.println("is word conflicting with other words: " + board.isWordConflicted(row4, col4, word, player, dir4));
 		System.out.println("Is at least one letter used: " + board.isLetterPlayed(word));
 		System.out.println("Is first word on centre: " + board.isFirstWordOnCentre(word));
 		System.out.println();

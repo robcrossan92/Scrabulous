@@ -206,7 +206,7 @@ public class Board {
 	/**
 	 * Checks if word is parallel to another word
 	 */
-	public boolean isWordParallel(int row, int col, String word, Player player, char dir ) {
+	public boolean isWordParallel(int row, int col, String word, Player player, char dir) {
 		boolean check = false;
 		
 		if(isWordCrossing(row, col, word, player, dir) == false) {
@@ -257,6 +257,7 @@ public class Board {
 	 * Method which plays a users move. Takes in player, word, position and direction user wants to play.
 	 */
 	public void playWord(int row, int col, String word, Player player, char dir) {
+		
 		if(isWordInFrame(row, col, word, player, dir)) {
 			System.out.println("Is word in frame: " + isWordInFrame(row, col, word, player, dir));
 			System.out.print("Is word connected: crossing: " + isWordCrossing(row, col, word, player, dir));
@@ -313,6 +314,9 @@ public class Board {
 				}
 			}
 			turnCount++;
+		}
+		else {
+			System.out.println("This word cannot be played.");
 		}
 	}
 	
