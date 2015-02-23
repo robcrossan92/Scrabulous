@@ -108,4 +108,8 @@ public class Player {
 		scoreForRound += getPlayerScore();
 		setPlayerScore(scoreForRound);
 	}
+	
+	public String toString() {
+		return getPlayerName();
+	}
 }
